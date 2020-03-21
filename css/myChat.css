@@ -1,0 +1,132 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: BlanchedAlmond;
+}
+
+.chat{
+	width: 100%;
+	margin: 0 auto;
+	margin-bottom: 200px;
+}
+
+
+.chat>ul{
+	list-style: none;
+	padding: 10px 80px;
+	overflow: hidden;/*目的为了引出BFC --> 清除浮动 */
+}
+
+/* 所有消息的伪元素样式 */
+.chat li::before{
+	content: '';
+	position: absolute;
+	top: -10px;
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+}
+
+/* 我的消息的伪元素样式 */
+.chat li[role = 'me']::before{
+	right: -60px;
+	background: url(../img/me.jpg);
+	background-size: cover;
+}
+
+/* 机器人的消息的伪元素样式 */
+.chat li[role = 'bot']::before{
+	left: -60px;
+	background: url(../img/test.jpg);
+	background-size: cover;
+}
+
+
+/* 所有消息的样式 */
+.chat li{
+	/*子绝父相*/
+	position: relative;
+	margin: 20px 0;
+	padding: 5px 12px;
+	border-radius: 8px;
+	clear: both;
+}
+
+/*我的消息样式*/
+.chat li[role = 'me']{
+	background-color: aqua;
+	float: right;
+}
+
+/*机器人的消息样式*/
+.chat li[role = 'bot']{
+	background-color: aquamarine;
+	float: left;
+}
+
+
+
+
+.send{
+	width: 500px;
+	height: 50px;
+	/* margin: 0 auto; 脱标的情况下，auto是无法计算的 */
+	text-align: center;
+	position: fixed;/*这里应该适用固定定位*/
+	bottom: 30px;
+	left: 50%;
+	/*让蓝色div的外边距向左走250px即可*/
+	margin-left: -250px;
+	padding: 5px 10px;
+}
+
+/* 子代选择器 */
+.send>input{
+	width: 300px;
+	height: 35px;
+	border: 0;
+	border-radius: 15px;
+	outline: none;
+	padding: 0 5px;
+}
+
+.send>button{
+	width: 100px;
+	border-radius: 10px;
+	border: 0;
+	outline: none;
+	background-color: chocolate;
+	color: whitesmoke;
+	padding: 5px 8px;
+	cursor: pointer;
+}
+
+
+/*音乐消息模板的样式*/
+.music{
+	width: 300px;
+	height: 100px;
+	border: 1px solid cornflowerblue;
+	border-radius: 5px;
+}
+
+.music img{
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+}
+
+.music p{
+	color: #41444e;
+	position: absolute;
+	top: 5px;
+	left: 100px;
+}
+
+.music a{
+	color: #1f69c0;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+
